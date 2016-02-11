@@ -21,6 +21,8 @@ import javax.swing.JFormattedTextField;
 import java.awt.Button;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -35,6 +37,7 @@ public class Inicio extends JFrame {
 	JFormattedTextField txtUser;
 	boolean bandera = false;
 	boolean bandera1 = false;
+	MenuPuertas menu ;
 	/**
 	 * Launch the application.
 	 */
@@ -351,10 +354,17 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(con.login(txtUser.getText(), passwordField.getText()))
 				{
-					JOptionPane.showMessageDialog(null, "Bienvenid@!");
+					/*Llamar l = new Llamar();
+					try {
+						l.hola();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}*/
+					JOptionPane.showMessageDialog(null, "Bienvenid@, "+txtUser.getText()+"!");
 					conMalla.conectar(Integer.parseInt(con.getIdMalla()));
 					setVisible(false);
-					MenuPuertas menu = new MenuPuertas(txtUser.getText());
+					menu = new MenuPuertas(txtUser.getText());
 					menu.setVisible(true);
 				}else
 				{

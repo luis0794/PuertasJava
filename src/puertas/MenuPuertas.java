@@ -26,7 +26,9 @@ public class MenuPuertas extends JFrame {
 	public JPanel panel;
 	public JPanel panel_1;
 	static EstadoLabs estado = new EstadoLabs();
-	static boolean[] est = estado.estado();
+	public boolean[] est = estado.estado();
+	Conexion con = new Conexion();
+	ConexionMalla conMalla = new ConexionMalla();
 	
 	public MenuPuertas(String usuario) {
 		setResizable(false);
@@ -115,7 +117,7 @@ public class MenuPuertas extends JFrame {
 				panel_1.setVisible(false);
 				Perfil perfil = new Perfil(usuario);
 				perfil.setVisible(true);
-				perfil.setBounds(0, 0, 784, 441);
+				perfil.setBounds(0, 0, 800, 480);
 				contentPane.add(perfil);
 				
 			}
@@ -126,6 +128,15 @@ public class MenuPuertas extends JFrame {
 		panel.add(btnPerfil);
 		
 		JButton btnSalir = new JButton("");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				con.logout();
+				conMalla.desconectar();
+				setVisible(false);
+			}
+		});
 		btnSalir.setToolTipText("Salir");
 		btnSalir.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/logout.png")));
 		btnSalir.setBounds(701, 11, 57, 58);

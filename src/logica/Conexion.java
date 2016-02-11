@@ -1,9 +1,6 @@
 package logica;
 import java.sql.*;
 
-
-
-
 public class Conexion {
 	
 	static String driver = "org.postgresql.Driver";
@@ -13,22 +10,27 @@ public class Conexion {
 	static Encriptacion cripto = new Encriptacion();
 	static String idMalla="";
 	static String idRol="";
+	static String userBase="";
+	static String nameBase="";
+	static String lastNBase="";
+	static String contraBase="";
 	
 	public boolean login(String usuario,String contrasena)
 	{
 		String sql = "select * from usuario where username= '"+usuario+"'";
-		String userBase="";
-		String contraBase="";
 		boolean flag = false;
-		
 		try{
+			
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(connectString, user , password);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()){
+				
 				userBase = rs.getString("username");
+				nameBase = rs.getString("nombre");
+				lastNBase = rs.getString("apellido");
 				contraBase = rs.getString("password");
 				idMalla= rs.getString("idusuariovinculado");
 				idRol= rs.getString("idrol");
@@ -41,7 +43,18 @@ public class Conexion {
 		catch ( Exception e ){
 			System.out.println(e.getMessage());
 		}
+		if(idMalla==null){idMalla="-1";}
 		return flag;
+	}
+	
+	public void logout()
+	{
+		setIdMalla("");
+		setIdRol("");
+		setlastName("");
+		setName("");
+		setPasswd("");
+		setUser("");
 	}
 	
 	public String getIdMalla()
@@ -62,6 +75,45 @@ public class Conexion {
 		idRol = id;
 	}
 	
+	//
+	public String getUser()
+	{
+		return userBase;
+	}
+	public void setUser(String usu)
+	{
+		userBase = usu;
+	}
+	
+	//
+	public String getPasswd()
+	{
+		return contraBase;
+	}
+	public void setPasswd(String pass)
+	{
+		contraBase = pass;
+	}
+	
+	//
+	public String getName()
+	{
+		return nameBase;
+	}
+	public void setName(String name)
+	{
+		nameBase = name;
+	}
+	
+	//
+	public String getlastName()
+	{
+		return lastNBase;
+	}
+	public void setlastName(String lastN)
+	{
+		lastNBase = lastN;
+	}
 
 }
 

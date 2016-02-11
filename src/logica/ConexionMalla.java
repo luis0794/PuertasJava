@@ -12,40 +12,55 @@ public class ConexionMalla {
 	static String user = "postgres";
 	static String password = "root";
 	static int idLectivo=-1;
-	static LinkedList<String> dias = new LinkedList<String>();
-	static LinkedList<String> horas = new LinkedList<String>();
-	static LinkedList<String> labs = new LinkedList<String>();
+	static LinkedList<String> dias;
+	static LinkedList<String> horas;
+	static LinkedList<String> labs;
 	char ch = 34;
 	
 	public void conectar(int id)
 	{
-		String sql = "select * from control_lectivo where estado = 'TRUE'";
-			
-		try{
-			Class.forName(driver);
-			Connection con = DriverManager.getConnection(connectString, user , password);
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			
-			while (rs.next()){
-				idLectivo = Integer.parseInt(rs.getString("id"));				
+		if(id==-1)
+		{
+			EstadoLabs est = new EstadoLabs();
+			est.estado();
+		}else
+		{
+			String sql = "select * from control_lectivo where estado = 'TRUE'";
+			dias = new LinkedList<String>();	
+			horas = new LinkedList<String>();
+			labs = new LinkedList<String>();
+			try{
+				Class.forName(driver);
+				Connection con = DriverManager.getConnection(connectString, user , password);
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				while (rs.next()){
+					idLectivo = Integer.parseInt(rs.getString("id"));				
+				}
+				sql = "select * from control_distributivo where ("+ch+"idDocente_id"+ch+" = "+id+") and ("+ch+"idLectivo_id"+ch+"="+idLectivo+") ";
+				rs = stmt.executeQuery(sql);
+				
+				while (rs.next()){
+					dias.add(rs.getString("dia"));
+					horas.add(rs.getString("horario"));
+					labs.add(rs.getString("idLab_id"));
+				}
+				stmt.close();
+				con.close();
 			}
-			sql = "select * from control_distributivo where ("+ch+"idDocente_id"+ch+" = "+id+") and ("+ch+"idLectivo_id"+ch+"="+idLectivo+") ";
-			rs = stmt.executeQuery(sql);
 			
-			while (rs.next()){
-				dias.add(rs.getString("dia"));
-				horas.add(rs.getString("horario"));
-				labs.add(rs.getString("idLab_id"));
-				System.out.println("Dia:"+rs.getString("dia") +" Horario:"+rs.getString("horario")+" Lab:"+rs.getString("idLab_id"));
+			catch ( Exception e ){
+				System.out.println(e.getMessage());
 			}
-			stmt.close();
-			con.close();
 		}
-		
-		catch ( Exception e ){
-			System.out.println(e.getMessage());
-		}
+	}
+	
+	public void desconectar()
+	{
+		setDias();
+		setHoras();
+		setLabs();
 	}
 	
 	public LinkedList<String> getDias()

@@ -7,21 +7,24 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import logica.Conexion;
+
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Perfil extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtCedula;
 	private JPasswordField passwordField;
-
+	static Conexion con = new Conexion();
 	/**
 	 * Create the panel.
 	 */
 	public Perfil(String usuario) {
-		setBackground(new Color(255, 255, 255));
+		setBackground(new Color(0, 102, 153));
 		setLayout(null);
 		
 		JButton btnSalir = new JButton("");
@@ -33,9 +36,10 @@ public class Perfil extends JPanel {
 		JButton btnBack = new JButton("");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				MenuPuertas puertas = new MenuPuertas(usuario);
 				puertas.setVisible(true);
+				puertas.panel.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnBack.setIcon(new ImageIcon(Perfil.class.getResource("/media/images/back.png")));
@@ -43,19 +47,14 @@ public class Perfil extends JPanel {
 		btnBack.setBounds(6, 11, 57, 58);
 		add(btnBack);
 		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(Perfil.class.getResource("/media/images/user.png")));
-		label.setBounds(72, 85, 57, 58);
-		add(label);
-		
-		JLabel lblNombre = new JLabel("Nombre: ");
+		JLabel lblNombre = new JLabel("Nombres: ");
 		lblNombre.setFont(new Font("SansSerif", Font.BOLD, 16));
-		lblNombre.setBounds(160, 161, 77, 29);
+		lblNombre.setBounds(160, 161, 90, 29);
 		add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido: ");
+		JLabel lblApellido = new JLabel("Apellidos: ");
 		lblApellido.setFont(new Font("SansSerif", Font.BOLD, 16));
-		lblApellido.setBounds(160, 224, 77, 29);
+		lblApellido.setBounds(160, 224, 90, 29);
 		add(lblApellido);
 		
 		JLabel lblCdula = new JLabel("C\u00E9dula: ");
@@ -68,25 +67,33 @@ public class Perfil extends JPanel {
 		lblContrasea.setBounds(160, 339, 105, 29);
 		add(lblContrasea);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(274, 160, 245, 35);
-		add(textField);
-		textField.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		txtNombre.setText(con.getName());
+		txtNombre.setEditable(false);
+		txtNombre.setBounds(274, 160, 245, 35);
+		add(txtNombre);
+		txtNombre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(274, 223, 245, 35);
-		add(textField_1);
+		txtApellido = new JTextField();
+		txtApellido.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		txtApellido.setText(con.getlastName());
+		txtApellido.setEditable(false);
+		txtApellido.setColumns(10);
+		txtApellido.setBounds(274, 223, 245, 35);
+		add(txtApellido);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBounds(274, 278, 245, 35);
-		add(textField_2);
+		txtCedula = new JTextField();
+		txtCedula.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		txtCedula.setText(con.getUser());
+		txtCedula.setEditable(false);
+		txtCedula.setColumns(10);
+		txtCedula.setBounds(274, 278, 245, 35);
+		add(txtCedula);
 		
 		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		passwordField.setText(con.getPasswd());
 		passwordField.setEditable(false);
 		passwordField.setBounds(277, 338, 245, 35);
 		add(passwordField);
@@ -94,9 +101,9 @@ public class Perfil extends JPanel {
 		JButton btnCambiar = new JButton("Cambiar");
 		btnCambiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				CambiarContra contra = new CambiarContra();
 				contra.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnCambiar.setFont(new Font("SansSerif", Font.BOLD, 12));
