@@ -15,6 +15,7 @@ public class ConexionMalla {
 	static LinkedList<String> dias;
 	static LinkedList<String> horas;
 	static LinkedList<String> labs;
+	static LinkedList<String> promo;
 	char ch = 34;
 	
 	public void conectar(int id)
@@ -29,6 +30,7 @@ public class ConexionMalla {
 			dias = new LinkedList<String>();	
 			horas = new LinkedList<String>();
 			labs = new LinkedList<String>();
+			promo = new LinkedList<String>();
 			try{
 				Class.forName(driver);
 				Connection con = DriverManager.getConnection(connectString, user , password);
@@ -45,6 +47,7 @@ public class ConexionMalla {
 					dias.add(rs.getString("dia"));
 					horas.add(rs.getString("horario"));
 					labs.add(rs.getString("idLab_id"));
+					promo.add(rs.getString("idPromo_id"));
 				}
 				stmt.close();
 				con.close();
@@ -61,6 +64,13 @@ public class ConexionMalla {
 		setDias();
 		setHoras();
 		setLabs();
+	}
+	
+	public void getSemester()
+	{
+		/*for (int i = 0; i < promo.size(); i++) {
+			System.out.println(promo.get(i)+" . "+ dias.get(i));
+		}*/
 	}
 	
 	public LinkedList<String> getDias()

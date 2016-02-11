@@ -26,11 +26,11 @@ public class MenuPuertas extends JFrame {
 	public JPanel panel;
 	public JPanel panel_1;
 	static EstadoLabs estado = new EstadoLabs();
-	public boolean[] est = estado.estado();
+	static boolean[] est = estado.estado();
 	Conexion con = new Conexion();
 	ConexionMalla conMalla = new ConexionMalla();
 	
-	public MenuPuertas(String usuario) {
+	public MenuPuertas() {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -119,7 +119,7 @@ public class MenuPuertas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panel.setVisible(false);
 				panel_1.setVisible(false);
-				Perfil perfil = new Perfil(usuario);
+				Perfil perfil = new Perfil();
 				perfil.setVisible(true);
 				perfil.setBounds(0, 0, 800, 480);
 				contentPane.add(perfil);

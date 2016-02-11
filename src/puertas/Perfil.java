@@ -25,7 +25,7 @@ public class Perfil extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Perfil(String usuario) {
+	public Perfil() {
 		setBackground(new Color(0, 102, 153));
 		setLayout(null);
 		
@@ -47,7 +47,7 @@ public class Perfil extends JPanel {
 		JButton btnBack = new JButton("");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPuertas puertas = new MenuPuertas(usuario);
+				MenuPuertas puertas = new MenuPuertas();
 				puertas.setVisible(true);
 				puertas.panel.setVisible(true);
 				setVisible(false);
@@ -113,9 +113,9 @@ public class Perfil extends JPanel {
 		btnCambiar.setIcon(new ImageIcon(Perfil.class.getResource("/media/images/refresh.png")));
 		btnCambiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CambiarContra contra = new CambiarContra(usuario);
+				CambiarContra contra = new CambiarContra();
 				setVisible(false);
-				MenuPuertas puertas = new MenuPuertas(usuario);
+				MenuPuertas puertas = new MenuPuertas();
 				contra.setBounds(0, 0, 800, 480);
 				puertas.setVisible(true);
 				puertas.panel.setVisible(false);

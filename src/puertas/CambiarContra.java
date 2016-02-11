@@ -33,7 +33,7 @@ public class CambiarContra extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CambiarContra(String usuario) {
+	public CambiarContra() {
 		setBackground(new Color(0, 102, 153));
 		setLayout(null);
 		
@@ -323,7 +323,7 @@ public class CambiarContra extends JPanel {
 					{
 						con.updatePass(cRNew);
 						JOptionPane.showMessageDialog(null, "Contraseña actualizada con exito!");
-						menu = new MenuPuertas(usuario);
+						menu = new MenuPuertas();
 				        menu.setVisible(true);
 				        setVisible(false);
 					}else
@@ -348,7 +348,7 @@ public class CambiarContra extends JPanel {
 				int ax = JOptionPane.showConfirmDialog(null, "Deseas cancelar?");
 		        if(ax == JOptionPane.YES_OPTION)
 		        {
-		        	menu = new MenuPuertas(usuario);
+		        	menu = new MenuPuertas();
 			        menu.setVisible(true);
 			        setVisible(false);
 		        }

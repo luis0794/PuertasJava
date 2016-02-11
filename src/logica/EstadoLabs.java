@@ -16,7 +16,6 @@ public class EstadoLabs {
 	static String fechaL = "";
 	static String fechaC = "";
 	static String hora = "";
-	static String semestre = "";
 	static Locale l = new Locale("es","EC");
 	static Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Bogota"),l);
 	

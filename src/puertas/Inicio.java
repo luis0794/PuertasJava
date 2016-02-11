@@ -27,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
+import javax.swing.JTextField;
 
 public class Inicio extends JFrame {
 	
@@ -34,10 +35,10 @@ public class Inicio extends JFrame {
 	ConexionMalla conMalla = new ConexionMalla();
 	private JPanel contentPane;
 	JPasswordField passwordField;
-	JFormattedTextField txtUser;
 	boolean bandera = false;
 	boolean bandera1 = false;
 	MenuPuertas menu ;
+	private JTextField txtUser;
 	/**
 	 * Launch the application.
 	 */
@@ -302,20 +303,6 @@ public class Inicio extends JFrame {
 		passwordField.setBounds(409, 240, 287, 71);
 		contentPane.add(passwordField);
 		
-		txtUser = new JFormattedTextField();
-		txtUser.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				bandera = true;
-				bandera1 = false;
-			}
-		});
-		
-		txtUser.setFocusLostBehavior(JFormattedTextField.PERSIST);
-		txtUser.setFont(new Font("SansSerif", Font.BOLD, 50));
-		txtUser.setBounds(409, 129, 287, 71);
-		contentPane.add(txtUser);
-		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(Inicio.class.getResource("/media/images/user.png")));
 		label.setBounds(326, 139, 48, 57);
@@ -346,7 +333,7 @@ public class Inicio extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(700, 131, 78, 65);
+		btnNewButton.setBounds(700, 136, 78, 65);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -355,8 +342,6 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(con.login(txtUser.getText(), passwordField.getText()))
 				{
-					EstadoLabs es = new EstadoLabs();
-					System.out.println(es.fechaL());
 					/*Llamar l = new Llamar();
 					try {
 						l.hola();
@@ -366,8 +351,9 @@ public class Inicio extends JFrame {
 					}*/
 					JOptionPane.showMessageDialog(null, "Bienvenid@, "+txtUser.getText()+"!");
 					conMalla.conectar(Integer.parseInt(con.getIdMalla()));
+					conMalla.getSemester();
 					setVisible(false);
-					menu = new MenuPuertas(txtUser.getText());
+					menu = new MenuPuertas();
 					menu.setVisible(true);
 				}else
 				{
@@ -378,5 +364,18 @@ public class Inicio extends JFrame {
 		});
 		btnNewButton_1.setBounds(700, 242, 78, 65);
 		contentPane.add(btnNewButton_1);
+		
+		txtUser = new JTextField();
+		txtUser.setFont(new Font("SansSerif", Font.BOLD, 60));
+		txtUser.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				bandera = true;
+				bandera1 = false;
+			}
+		});
+		txtUser.setBounds(409, 134, 287, 71);
+		contentPane.add(txtUser);
+		txtUser.setColumns(10);
 	}
 }
