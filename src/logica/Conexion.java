@@ -43,19 +43,6 @@ public class Conexion {
 		return flag;
 	}
 	
-	public void prueba()
-	{
-		String code="echo 5+5;"; 
-		System.out.println("si");
-		ScriptEngineManager manager = new ScriptEngineManager();
-		ScriptEngine engine = manager.getEngineByExtension("php");
-		try {
-		    engine.eval(code);
-		} catch (ScriptException ex) {
-		    //catch statement
-		}
-	}
-	
 
 }
 

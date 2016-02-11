@@ -354,7 +354,6 @@ public class Inicio extends JFrame {
 					setVisible(false);
 					MenuPuertas menu = new MenuPuertas(txtUser.getText());
 					menu.setVisible(true);
-					con.prueba();
 				}else
 				{
 					JOptionPane.showMessageDialog(null, "Error de inicio!");
