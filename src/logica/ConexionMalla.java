@@ -90,6 +90,12 @@ public class ConexionMalla {
 		labs = new LinkedList<String>();
 	}
 	
+	public String getLab(int p)
+	{
+		return labs.get(p);
+	}
+	
+	
 
 
 }

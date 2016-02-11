@@ -35,6 +35,7 @@ public class MenuPuertas extends JFrame {
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 480);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -51,7 +52,10 @@ public class MenuPuertas extends JFrame {
 		btnPuerta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Casi");
-				//estado.Date();
+				conMalla.getLab(0);
+				estado.fechaL();
+				estado.hora();
+				estado.fechaC();
 			}
 		});
 		btnPuerta1.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab1r.png")));
@@ -202,11 +206,20 @@ public class MenuPuertas extends JFrame {
 		button_6.setBounds(634, 11, 57, 58);
 		panel_1.add(button_6);
 		
-		JButton button_7 = new JButton("");
-		button_7.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/logout.png")));
-		button_7.setToolTipText("Salir");
-		button_7.setBounds(701, 11, 57, 58);
-		panel_1.add(button_7);
+		JButton btnSalir2 = new JButton("");
+		btnSalir2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				con.logout();
+				conMalla.desconectar();
+				setVisible(false);
+			}
+		});
+		btnSalir2.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/logout.png")));
+		btnSalir2.setToolTipText("Salir");
+		btnSalir2.setBounds(701, 11, 57, 58);
+		panel_1.add(btnSalir2);
 		
 		JButton button_9 = new JButton("");
 		button_9.addActionListener(new ActionListener() {

@@ -13,6 +13,12 @@ public class EstadoLabs {
 	static LinkedList<String> dias = conMalla.getDias();
 	static LinkedList<String> horas = conMalla.getHoras();
 	static LinkedList<String> labs = conMalla.getLabs();
+	static String fechaL = "";
+	static String fechaC = "";
+	static String hora = "";
+	static String semestre = "";
+	static Locale l = new Locale("es","EC");
+	static Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Bogota"),l);
 	
 	public boolean[] estado()
 	{
@@ -68,13 +74,42 @@ public class EstadoLabs {
 		dias[2]="Miercoles";
 		dias[3]="Jueves";
 		dias[4]="Viernes";
-		Locale l = new Locale("es","EC");
-		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Bogota"),l);
 		datos[0]=dias[cal.get(Calendar.DAY_OF_WEEK)-2];
 		datos[1]=""+cal.get(Calendar.HOUR);
 		datos[2]=""+cal.get(Calendar.MINUTE);
 		return datos;
 		
+	}
+	public String fechaL()
+	{	
+		String[] meses = new String[12];
+		meses[0]="Enero";
+		meses[1]="Febrero";
+		meses[2]="Marzo";
+		meses[3]="Abril";
+		meses[4]="Mayo";
+		meses[5]="Junio";
+		meses[6]="Julio";
+		meses[7]="Agosto";
+		meses[8]="Septiembre";
+		meses[9]="Octubre";
+		meses[10]="Noviembre";
+		meses[11]="Diciembre";
+		String fecha = cal.get(Calendar.DAY_OF_MONTH)+" de "+meses[cal.get(Calendar.MONTH)]+
+				" del "+cal.get(Calendar.YEAR)+" a las "+cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE);
+		return fecha;
+	}
+	
+	public String fechaC()
+	{
+		String fecha=""+cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1)+"-"+cal.get(Calendar.DAY_OF_MONTH);
+		return fecha;
+	}
+	
+	public String hora()
+	{
+		String hora=""+cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE);
+		return hora;
 	}
 	
 	static void verificar(String dia)

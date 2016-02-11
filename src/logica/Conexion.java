@@ -8,6 +8,8 @@ public class Conexion {
 	static String user = "postgres";
 	static String password = "root";
 	static Encriptacion cripto = new Encriptacion();
+	static EstadoLabs estado = new EstadoLabs();
+	static String id="";
 	static String idMalla="";
 	static String idRol="";
 	static String userBase="";
@@ -27,14 +29,14 @@ public class Conexion {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()){
-				
+				id = rs.getString("idusuario");
 				userBase = rs.getString("username");
 				nameBase = rs.getString("nombre");
 				lastNBase = rs.getString("apellido");
 				contraBase = rs.getString("password");
 				idMalla= rs.getString("idusuariovinculado");
 				idRol= rs.getString("idrol");
-				if(contrasena.equals(contraBase) && usuario.equals(userBase)){flag=true;}
+				if(contrasena.equals(cripto.Desencriptar(contraBase)) && usuario.equals(userBase)){flag=true;}
 			}
 			stmt.close();
 			con.close();
@@ -55,6 +57,47 @@ public class Conexion {
 		setName("");
 		setPasswd("");
 		setUser("");
+	}
+	
+	public boolean updatePass(String pass)
+	{
+		String critoPass = cripto.Encriptar(pass);
+		String sql = "update usuario set password = '"+critoPass+"' where username = '"+userBase+"'";
+		boolean flag = false;
+		try{
+			
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(connectString, user , password);
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+			stmt.close();
+			con.close();
+		}
+		
+		catch ( Exception e ){
+			System.out.println(e.getMessage());
+		}
+		return flag;
+	}
+	
+	public boolean saveReg(int idLab, String fechaL, String hora, String semestre, String fechaC)
+	{
+		String sql = "insert into registro values ('"+id+"',"+idLab+",'"+fechaL+"','"+hora+"','"+semestre+"','"+fechaC+"')";
+		boolean flag = false;
+		try{
+			
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(connectString, user , password);
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+			stmt.close();
+			con.close();
+		}
+		
+		catch ( Exception e ){
+			System.out.println(e.getMessage());
+		}
+		return flag;
 	}
 	
 	public String getIdMalla()

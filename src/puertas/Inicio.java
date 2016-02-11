@@ -71,6 +71,7 @@ public class Inicio extends JFrame {
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 802, 482);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 153));
 		contentPane.setForeground(new Color(0, 0, 0));
@@ -81,7 +82,7 @@ public class Inicio extends JFrame {
 		Panel panel = new Panel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(0, 102, 153));
-		panel.setBounds(57, 168, 215, 182);
+		panel.setBounds(57, 129, 215, 182);
 		contentPane.add(panel);
 		
 		JButton button = new JButton("7");
@@ -298,7 +299,7 @@ public class Inicio extends JFrame {
 			}
 		});
 		passwordField.setFont(new Font("SansSerif", Font.BOLD, 60));
-		passwordField.setBounds(409, 279, 287, 71);
+		passwordField.setBounds(409, 240, 287, 71);
 		contentPane.add(passwordField);
 		
 		txtUser = new JFormattedTextField();
@@ -312,17 +313,17 @@ public class Inicio extends JFrame {
 		
 		txtUser.setFocusLostBehavior(JFormattedTextField.PERSIST);
 		txtUser.setFont(new Font("SansSerif", Font.BOLD, 50));
-		txtUser.setBounds(409, 168, 287, 71);
+		txtUser.setBounds(409, 129, 287, 71);
 		contentPane.add(txtUser);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(Inicio.class.getResource("/media/images/user.png")));
-		label.setBounds(326, 178, 48, 57);
+		label.setBounds(326, 139, 48, 57);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(Inicio.class.getResource("/media/images/password.png")));
-		label_1.setBounds(326, 279, 48, 57);
+		label_1.setBounds(326, 240, 48, 57);
 		contentPane.add(label_1);
 		
 		JButton btnNewButton = new JButton("");
@@ -345,7 +346,7 @@ public class Inicio extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(700, 170, 78, 65);
+		btnNewButton.setBounds(700, 131, 78, 65);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -354,6 +355,8 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(con.login(txtUser.getText(), passwordField.getText()))
 				{
+					EstadoLabs es = new EstadoLabs();
+					System.out.println(es.fechaL());
 					/*Llamar l = new Llamar();
 					try {
 						l.hola();
@@ -368,11 +371,12 @@ public class Inicio extends JFrame {
 					menu.setVisible(true);
 				}else
 				{
-					JOptionPane.showMessageDialog(null, "Error de inicio!");
+					JOptionPane.showMessageDialog(new JFrame(), "Error!, verifique sus datos.", "Dialog",
+						      JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		btnNewButton_1.setBounds(700, 281, 78, 65);
+		btnNewButton_1.setBounds(700, 242, 78, 65);
 		contentPane.add(btnNewButton_1);
 	}
 }
