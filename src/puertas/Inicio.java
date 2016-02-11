@@ -29,6 +29,7 @@ import java.awt.SystemColor;
 public class Inicio extends JFrame {
 	
 	Conexion con = new Conexion();
+	ConexionMalla conMalla = new ConexionMalla();
 	private JPanel contentPane;
 	JPasswordField passwordField;
 	JFormattedTextField txtUser;
@@ -351,6 +352,7 @@ public class Inicio extends JFrame {
 				if(con.login(txtUser.getText(), passwordField.getText()))
 				{
 					JOptionPane.showMessageDialog(null, "Bienvenid@!");
+					conMalla.conectar(Integer.parseInt(con.getIdMalla()));
 					setVisible(false);
 					MenuPuertas menu = new MenuPuertas(txtUser.getText());
 					menu.setVisible(true);

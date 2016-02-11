@@ -8,7 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import logica.ControlGPIO;
+import logica.Conexion;
+import logica.ConexionMalla;
+import logica.EstadoLabs;
 
 import java.awt.Window.Type;
 import javax.swing.JButton;
@@ -23,7 +25,9 @@ public class MenuPuertas extends JFrame {
 	public JPanel contentPane;
 	public JPanel panel;
 	public JPanel panel_1;
-
+	static EstadoLabs estado = new EstadoLabs();
+	static boolean[] est = estado.estado();
+	
 	public MenuPuertas(String usuario) {
 		setResizable(false);
 		setType(Type.UTILITY);
@@ -41,16 +45,11 @@ public class MenuPuertas extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnPuerta1 = new JButton("");
+		btnPuerta1.setEnabled(est[0]);
 		btnPuerta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControlGPIO gpio = new ControlGPIO();
-				try {
-					gpio.uno();
-					JOptionPane.showMessageDialog(null, "Abrio?");
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				JOptionPane.showMessageDialog(null, "Casi");
+				//estado.Date();
 			}
 		});
 		btnPuerta1.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab1r.png")));
@@ -58,26 +57,53 @@ public class MenuPuertas extends JFrame {
 		panel.add(btnPuerta1);
 		
 		JButton btnPuerta2 = new JButton("");
+		btnPuerta2.setEnabled(est[1]);
+		btnPuerta2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0){
+				
+				
+			}
+		});
 		btnPuerta2.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab2r.png")));
 		btnPuerta2.setBounds(293, 168, 213, 93);
 		panel.add(btnPuerta2);
 		
 		JButton btnPuerta3 = new JButton("");
+		btnPuerta3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPuerta3.setEnabled(est[2]);
 		btnPuerta3.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab3r.png")));
 		btnPuerta3.setBounds(545, 168, 213, 93);
 		panel.add(btnPuerta3);
 		
 		JButton btnPuerta4 = new JButton("");
+		btnPuerta4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPuerta4.setEnabled(est[3]);
 		btnPuerta4.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab4r.png")));
 		btnPuerta4.setBounds(46, 280, 213, 93);
 		panel.add(btnPuerta4);
 		
 		JButton btnPuerta5 = new JButton("");
+		btnPuerta5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPuerta5.setEnabled(est[4]);
 		btnPuerta5.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab5r.png")));
 		btnPuerta5.setBounds(293, 280, 213, 93);
 		panel.add(btnPuerta5);
 		
 		JButton btnPuerta6 = new JButton("");
+		btnPuerta6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPuerta6.setEnabled(est[5]);
 		btnPuerta6.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab6r.png")));
 		btnPuerta6.setBounds(545, 280, 213, 93);
 		panel.add(btnPuerta6);
@@ -123,35 +149,41 @@ public class MenuPuertas extends JFrame {
 		panel_1.setLayout(null);
 		panel_1.setBackground(new Color(0, 102, 153));
 		
-		JButton button = new JButton("");
-		button.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/ELECTr.png")));
-		button.setBounds(46, 168, 213, 93);
-		panel_1.add(button);
+		JButton btnPuerta7 = new JButton("");
+		btnPuerta7.setEnabled(est[6]);
+		btnPuerta7.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/ELECTr.png")));
+		btnPuerta7.setBounds(46, 168, 213, 93);
+		panel_1.add(btnPuerta7);
 		
-		JButton button_1 = new JButton("");
-		button_1.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/macr.png")));
-		button_1.setBounds(293, 168, 213, 93);
-		panel_1.add(button_1);
+		JButton btnPuerta8 = new JButton("");
+		btnPuerta8.setEnabled(est[7]);
+		btnPuerta8.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/macr.png")));
+		btnPuerta8.setBounds(293, 168, 213, 93);
+		panel_1.add(btnPuerta8);
 		
-		JButton button_2 = new JButton("");
-		button_2.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/telecomur.png")));
-		button_2.setBounds(545, 168, 213, 93);
-		panel_1.add(button_2);
+		JButton btnPuerta9 = new JButton("");
+		btnPuerta9.setEnabled(est[8]);
+		btnPuerta9.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/telecomur.png")));
+		btnPuerta9.setBounds(545, 168, 213, 93);
+		panel_1.add(btnPuerta9);
 		
-		JButton button_3 = new JButton("");
-		button_3.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/ADMr.png")));
-		button_3.setBounds(46, 280, 213, 93);
-		panel_1.add(button_3);
+		JButton btnPuerta10 = new JButton("");
+		btnPuerta10.setEnabled(est[9]);
+		btnPuerta10.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/ADMr.png")));
+		btnPuerta10.setBounds(46, 280, 213, 93);
+		panel_1.add(btnPuerta10);
 		
-		JButton button_4 = new JButton("");
-		button_4.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/DIREr.png")));
-		button_4.setBounds(293, 280, 213, 93);
-		panel_1.add(button_4);
+		JButton btnPuerta11 = new JButton("");
+		btnPuerta11.setEnabled(est[10]);
+		btnPuerta11.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/DIREr.png")));
+		btnPuerta11.setBounds(293, 280, 213, 93);
+		panel_1.add(btnPuerta11);
 		
-		JButton button_5 = new JButton("");
-		button_5.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/profer.png")));
-		button_5.setBounds(545, 280, 213, 93);
-		panel_1.add(button_5);
+		JButton btnPuerta12 = new JButton("");
+		btnPuerta12.setEnabled(est[11]);
+		btnPuerta12.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/profer.png")));
+		btnPuerta12.setBounds(545, 280, 213, 93);
+		panel_1.add(btnPuerta12);
 		
 		JButton button_6 = new JButton("");
 		button_6.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/setting.png")));

@@ -1,10 +1,7 @@
 package logica;
 import java.sql.*;
 
-import javax.script.*;
-import php.java.bridge.*;
-import php.java.script.*;
-import php.java.servlet.*;
+
 
 
 public class Conexion {
@@ -14,10 +11,12 @@ public class Conexion {
 	static String user = "postgres";
 	static String password = "root";
 	static Encriptacion cripto = new Encriptacion();
+	static String idMalla="";
+	static String idRol="";
 	
 	public boolean login(String usuario,String contrasena)
 	{
-		String sql = "select * from usuario";
+		String sql = "select * from usuario where username= '"+usuario+"'";
 		String userBase="";
 		String contraBase="";
 		boolean flag = false;
@@ -31,6 +30,8 @@ public class Conexion {
 			while (rs.next()){
 				userBase = rs.getString("username");
 				contraBase = rs.getString("password");
+				idMalla= rs.getString("idusuariovinculado");
+				idRol= rs.getString("idrol");
 				if(contrasena.equals(contraBase) && usuario.equals(userBase)){flag=true;}
 			}
 			stmt.close();
@@ -41,6 +42,24 @@ public class Conexion {
 			System.out.println(e.getMessage());
 		}
 		return flag;
+	}
+	
+	public String getIdMalla()
+	{
+		return idMalla;
+	}
+	public void setIdMalla(String id)
+	{
+		idMalla = id;
+	}
+	
+	public String getIdRol()
+	{
+		return idRol;
+	}
+	public void setIdRol(String id)
+	{
+		idRol = id;
 	}
 	
 
