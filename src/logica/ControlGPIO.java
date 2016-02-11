@@ -10,7 +10,7 @@ public class ControlGPIO {
 	public void uno() throws InterruptedException
 	{
 		final GpioController gpio = GpioFactory.getInstance();
-		final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
+		final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_21, "MyLED", PinState.HIGH);
 		Thread.sleep(5000);
 		
 		/*pin.low();
