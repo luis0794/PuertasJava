@@ -80,217 +80,6 @@ public class Inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Panel panel = new Panel();
-		panel.setLayout(null);
-		panel.setBackground(new Color(0, 102, 153));
-		panel.setBounds(57, 129, 215, 182);
-		contentPane.add(panel);
-		
-		JButton button = new JButton("7");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"7");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"7");
-				}
-				
-			}
-		});
-		button.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button.setBounds(10, 11, 52, 31);
-		panel.add(button);
-		
-		JButton button_1 = new JButton("8");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"8");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"8");
-				}
-			}
-		});
-		button_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_1.setBounds(76, 11, 52, 31);
-		panel.add(button_1);
-		
-		JButton button_2 = new JButton("9");
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"9");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"9");
-				}
-			}
-		});
-		button_2.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_2.setBounds(149, 11, 52, 31);
-		panel.add(button_2);
-		
-		JButton button_3 = new JButton("6");
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"6");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"6");
-				}
-			}
-		});
-		button_3.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_3.setBounds(149, 53, 52, 31);
-		panel.add(button_3);
-		
-		JButton button_4 = new JButton("5");
-		button_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"5");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"5");
-				}
-			}
-		});
-		button_4.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_4.setBounds(76, 53, 52, 31);
-		panel.add(button_4);
-		
-		JButton button_5 = new JButton("4");
-		button_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"4");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"4");
-				}
-			}
-		});
-		button_5.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_5.setBounds(10, 53, 52, 31);
-		panel.add(button_5);
-		
-		JButton button_6 = new JButton("1");
-		button_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"1");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"1");
-				}
-			}
-		});
-		button_6.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_6.setBounds(10, 95, 52, 31);
-		panel.add(button_6);
-		
-		JButton button_7 = new JButton("2");
-		button_7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"2");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"2");
-				}
-			}
-		});
-		button_7.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_7.setBounds(76, 95, 52, 31);
-		panel.add(button_7);
-		
-		JButton button_8 = new JButton("0");
-		button_8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"0");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"0");
-				}
-			}
-		});
-		button_8.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_8.setBounds(76, 137, 52, 31);
-		panel.add(button_8);
-		
-		JButton button_9 = new JButton("#");
-		button_9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"#");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"#");
-				}
-			}
-		});
-		button_9.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_9.setBounds(10, 137, 52, 31);
-		panel.add(button_9);
-		
-		JButton button_10 = new JButton("3");
-		button_10.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"3");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"3");
-				}
-			}
-		});
-		button_10.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_10.setBounds(149, 95, 52, 31);
-		panel.add(button_10);
-		
-		JButton button_11 = new JButton("*");
-		button_11.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(bandera==true)
-				{
-					txtUser.setText(txtUser.getText()+"*");
-				}
-				if(bandera1==true)
-				{
-					passwordField.setText(passwordField.getText()+"*");
-				}
-			}
-		});
-		button_11.setFont(new Font("Tahoma", Font.BOLD, 18));
-		button_11.setBounds(149, 137, 52, 31);
-		panel.add(button_11);
-		
 		passwordField = new JPasswordField();
 		passwordField.addMouseListener(new MouseAdapter() {
 			@Override
@@ -342,16 +131,8 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(con.login(txtUser.getText(), passwordField.getText()))
 				{
-					/*Llamar l = new Llamar();
-					try {
-						l.hola();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}*/
 					JOptionPane.showMessageDialog(null, "Bienvenid@, "+txtUser.getText()+"!");
 					conMalla.conectar(Integer.parseInt(con.getIdMalla()));
-					conMalla.getSemester();
 					setVisible(false);
 					menu = new MenuPuertas();
 					menu.setVisible(true);
@@ -377,5 +158,70 @@ public class Inicio extends JFrame {
 		txtUser.setBounds(409, 134, 287, 71);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
+		
+		JButton button = new JButton("7");
+		button.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button.setBounds(18, 46, 96, 90);
+		contentPane.add(button);
+		
+		JButton button_1 = new JButton("8");
+		button_1.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_1.setBounds(112, 46, 96, 90);
+		contentPane.add(button_1);
+		
+		JButton button_2 = new JButton("9");
+		button_2.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_2.setBounds(207, 46, 96, 90);
+		contentPane.add(button_2);
+		
+		JButton button_3 = new JButton("6");
+		button_3.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_3.setBounds(207, 136, 96, 90);
+		contentPane.add(button_3);
+		
+		JButton button_4 = new JButton("5");
+		button_4.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_4.setBounds(112, 136, 96, 90);
+		contentPane.add(button_4);
+		
+		JButton button_5 = new JButton("4");
+		button_5.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_5.setBounds(18, 136, 96, 90);
+		contentPane.add(button_5);
+		
+		JButton button_6 = new JButton("1");
+		button_6.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_6.setBounds(18, 225, 96, 90);
+		contentPane.add(button_6);
+		
+		JButton button_7 = new JButton("2");
+		button_7.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_7.setBounds(112, 225, 96, 90);
+		contentPane.add(button_7);
+		
+		JButton button_8 = new JButton("3");
+		button_8.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_8.setBounds(207, 225, 96, 90);
+		contentPane.add(button_8);
+		
+		JButton button_9 = new JButton("*");
+		button_9.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_9.setBounds(207, 315, 96, 90);
+		contentPane.add(button_9);
+		
+		JButton button_10 = new JButton("0");
+		button_10.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_10.setBounds(112, 315, 96, 90);
+		contentPane.add(button_10);
+		
+		JButton button_11 = new JButton("#");
+		button_11.setFont(new Font("Tahoma", Font.BOLD, 60));
+		button_11.setBounds(18, 315, 96, 90);
+		contentPane.add(button_11);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(Inicio.class.getResource("/media/images/fondo.jpg")));
+		label_2.setBounds(0, 0, 796, 453);
+		contentPane.add(label_2);
 	}
 }

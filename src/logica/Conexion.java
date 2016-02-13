@@ -82,7 +82,7 @@ public class Conexion {
 	
 	public boolean saveReg(int idLab, String fechaL, String hora, String semestre, String fechaC)
 	{
-		String sql = "insert into registro values ('"+id+"',"+idLab+",'"+fechaL+"','"+hora+"','"+semestre+"','"+fechaC+"')";
+		String sql = "insert into registro (idusuario,idlaboratorio,fecha_hora_registro,hora_registro,semestre_registro,fecha_registro) values ('"+id+"',"+idLab+",'"+fechaL+"','"+hora+"','"+semestre+"','"+fechaC+"')";
 		boolean flag = false;
 		try{
 			

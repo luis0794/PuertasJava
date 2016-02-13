@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import java.util.ResourceBundle.Control;
 import java.awt.event.ActionEvent;
 
@@ -28,7 +29,8 @@ public class MenuPuertas extends JFrame {
 	static EstadoLabs estado = new EstadoLabs();
 	static boolean[] est = estado.estado();
 	Conexion con = new Conexion();
-	ConexionMalla conMalla = new ConexionMalla();
+	static ConexionMalla conMalla = new ConexionMalla();
+	static LinkedList<String> promo = conMalla.getPromo();
 	
 	public MenuPuertas() {
 		setResizable(false);
@@ -52,10 +54,7 @@ public class MenuPuertas extends JFrame {
 		btnPuerta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Casi");
-				conMalla.getLab(0);
-				estado.fechaL();
-				estado.hora();
-				estado.fechaC();
+				con.saveReg(Integer.parseInt(conMalla.getLab(0)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
 			}
 		});
 		btnPuerta1.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab1r.png")));
@@ -177,6 +176,16 @@ public class MenuPuertas extends JFrame {
 		panel_1.add(btnPuerta8);
 		
 		JButton btnPuerta9 = new JButton("");
+		btnPuerta9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//pulso
+				con.saveReg(Integer.parseInt(conMalla.getLab(0)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
+				JOptionPane.showMessageDialog(null, "Abierto!");
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				setVisible(false);
+			}
+		});
 		btnPuerta9.setEnabled(est[8]);
 		btnPuerta9.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/telecomur.png")));
 		btnPuerta9.setBounds(545, 168, 213, 93);

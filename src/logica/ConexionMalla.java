@@ -1,5 +1,6 @@
 package logica;
 
+import java.nio.channels.ShutdownChannelGroupException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,10 +13,10 @@ public class ConexionMalla {
 	static String user = "postgres";
 	static String password = "root";
 	static int idLectivo=-1;
-	static LinkedList<String> dias;
-	static LinkedList<String> horas;
-	static LinkedList<String> labs;
-	static LinkedList<String> promo;
+	static LinkedList<String> dias = new LinkedList<String>();;
+	static LinkedList<String> horas = new LinkedList<String>();
+	static LinkedList<String> labs = new LinkedList<String>();
+	static LinkedList<String> promo = new LinkedList<String>();
 	char ch = 34;
 	
 	public void conectar(int id)
@@ -27,10 +28,7 @@ public class ConexionMalla {
 		}else
 		{
 			String sql = "select * from control_lectivo where estado = 'TRUE'";
-			dias = new LinkedList<String>();	
-			horas = new LinkedList<String>();
-			labs = new LinkedList<String>();
-			promo = new LinkedList<String>();
+			
 			try{
 				Class.forName(driver);
 				Connection con = DriverManager.getConnection(connectString, user , password);
@@ -66,11 +64,28 @@ public class ConexionMalla {
 		setLabs();
 	}
 	
-	public void getSemester()
+	public String getSemester(int idPromo)
 	{
-		/*for (int i = 0; i < promo.size(); i++) {
-			System.out.println(promo.get(i)+" . "+ dias.get(i));
-		}*/
+		String sql = "select * from control_semestre where id = "+idPromo+"";
+		String nombre="";
+		try{
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(connectString, user , password);
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while (rs.next()){
+				nombre=rs.getString("nombre");
+			}
+			
+			stmt.close();
+			con.close();
+		}
+		
+		catch ( Exception e ){
+			System.out.println(e.getMessage());
+		}
+		return nombre;
 	}
 	
 	public LinkedList<String> getDias()
@@ -103,6 +118,15 @@ public class ConexionMalla {
 	public String getLab(int p)
 	{
 		return labs.get(p);
+	}
+	
+	public LinkedList<String> getPromo()
+	{
+		return promo;
+	}
+	public void setPromo()
+	{
+		promo = new LinkedList<String>();
 	}
 	
 	

@@ -13,6 +13,7 @@ public class EstadoLabs {
 	static LinkedList<String> dias = conMalla.getDias();
 	static LinkedList<String> horas = conMalla.getHoras();
 	static LinkedList<String> labs = conMalla.getLabs();
+	static LinkedList<String> promo = conMalla.getPromo();
 	static String fechaL = "";
 	static String fechaC = "";
 	static String hora = "";
@@ -116,6 +117,8 @@ public class EstadoLabs {
 		for (int i = 0; i < dias.size(); i++) {
 			if (dias.get(i).equals(dia)) 
 			{
+				promo.set(i, ""+i);
+				System.out.println(i+"");
 				String[] hora = horas.get(i).split("-");
 				String horamI = hora[0];
 				String horamF = hora[1];
