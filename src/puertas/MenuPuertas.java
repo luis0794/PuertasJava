@@ -53,8 +53,11 @@ public class MenuPuertas extends JFrame {
 		btnPuerta1.setEnabled(est[0]);
 		btnPuerta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Casi");
-				con.saveReg(Integer.parseInt(conMalla.getLab(0)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
+				con.saveReg(1, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
+				JOptionPane.showMessageDialog(null, "Abierto!");
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnPuerta1.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab1r.png")));
@@ -65,7 +68,11 @@ public class MenuPuertas extends JFrame {
 		btnPuerta2.setEnabled(est[1]);
 		btnPuerta2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0){
-				
+				con.saveReg(2, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(1))), estado.fechaC());
+				JOptionPane.showMessageDialog(null, "Abierto!");
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
@@ -76,6 +83,11 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta3 = new JButton("");
 		btnPuerta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				con.saveReg(3, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(2))), estado.fechaC());
+				JOptionPane.showMessageDialog(null, "Abierto!");
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnPuerta3.setEnabled(est[2]);
@@ -86,6 +98,11 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta4 = new JButton("");
 		btnPuerta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				con.saveReg(4, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(3))), estado.fechaC());
+				JOptionPane.showMessageDialog(null, "Abierto!");
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnPuerta4.setEnabled(est[3]);
@@ -96,6 +113,11 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta5 = new JButton("");
 		btnPuerta5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				con.saveReg(5, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(4))), estado.fechaC());
+				JOptionPane.showMessageDialog(null, "Abierto!");
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnPuerta5.setEnabled(est[4]);
@@ -106,6 +128,11 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta6 = new JButton("");
 		btnPuerta6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				con.saveReg(6, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(5))), estado.fechaC());
+				JOptionPane.showMessageDialog(null, "Abierto!");
+				Inicio inicio = new Inicio();
+				inicio.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnPuerta6.setEnabled(est[5]);
@@ -210,6 +237,16 @@ public class MenuPuertas extends JFrame {
 		panel_1.add(btnPuerta12);
 		
 		JButton button_6 = new JButton("");
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				panel_1.setVisible(false);
+				Perfil perfil = new Perfil();
+				perfil.setVisible(true);
+				perfil.setBounds(0, 0, 800, 480);
+				contentPane.add(perfil);
+			}
+		});
 		button_6.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/setting.png")));
 		button_6.setToolTipText("Configuraci\u00F3n");
 		button_6.setBounds(634, 11, 57, 58);

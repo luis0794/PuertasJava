@@ -66,7 +66,7 @@ public class ConexionMalla {
 	
 	public String getSemester(int idPromo)
 	{
-		String sql = "select * from control_semestre where id = "+idPromo+"";
+		String sql = "select * from control_semestre where id = "+(idPromo-1)+"";
 		String nombre="";
 		try{
 			Class.forName(driver);

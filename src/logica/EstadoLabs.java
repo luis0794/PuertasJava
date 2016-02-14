@@ -32,19 +32,19 @@ public class EstadoLabs {
 		{
 			Date();
 			switch ( datos[0] ) {
-		      case "Lunes":
+		      case "2":
 		    	  verificar("Lunes");
 		    	  break;
-		      case "Martes":
+		      case "3":
 		    	  verificar("Martes");
 		    	  break;
-		      case "Miercoles":
+		      case "4":
 		    	  verificar("Miercoles");
 		    	  break;
-		      case "Jueves":
+		      case "5":
 		    	  verificar("Jueves");
 		    	  break;
-		      case "Viernes":
+		      case "6":
 		    	  verificar("Viernes");
 		    	  break;
 			}
@@ -74,7 +74,7 @@ public class EstadoLabs {
 		dias[2]="Miercoles";
 		dias[3]="Jueves";
 		dias[4]="Viernes";
-		datos[0]=dias[cal.get(Calendar.DAY_OF_WEEK)-2];
+		datos[0]=""+(cal.get(Calendar.DAY_OF_WEEK)+1);
 		datos[1]=""+cal.get(Calendar.HOUR);
 		datos[2]=""+cal.get(Calendar.MINUTE);
 		return datos;
@@ -96,7 +96,7 @@ public class EstadoLabs {
 		meses[10]="Noviembre";
 		meses[11]="Diciembre";
 		String fecha = cal.get(Calendar.DAY_OF_MONTH)+" de "+meses[cal.get(Calendar.MONTH)]+
-				" del "+cal.get(Calendar.YEAR)+" a las "+cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE);
+				" del "+cal.get(Calendar.YEAR)+" a las "+hora();
 		return fecha;
 	}
 	
@@ -108,8 +108,19 @@ public class EstadoLabs {
 	
 	public String hora()
 	{
-		String hora=""+cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE);
-		return hora;
+		String hour="";
+		String hora=""+cal.get(Calendar.HOUR);
+		String min =""+cal.get(Calendar.MINUTE);
+		if(cal.get(Calendar.MINUTE)<10)
+		{
+			min ="0"+cal.get(Calendar.MINUTE);
+		}
+		if(cal.get(Calendar.HOUR)<10)
+		{
+			hora ="0"+cal.get(Calendar.HOUR);
+		}
+		hour=hora+":"+min;
+		return hour;
 	}
 	
 	static void verificar(String dia)
@@ -118,7 +129,6 @@ public class EstadoLabs {
 			if (dias.get(i).equals(dia)) 
 			{
 				promo.set(i, ""+i);
-				System.out.println(i+"");
 				String[] hora = horas.get(i).split("-");
 				String horamI = hora[0];
 				String horamF = hora[1];
