@@ -127,6 +127,11 @@ public class Perfil extends JPanel {
 		btnCambiar.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btnCambiar.setBounds(562, 343, 69, 69);
 		add(btnCambiar);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(Perfil.class.getResource("/media/images/fondo.jpg")));
+		label.setBounds(0, 0, 800, 480);
+		add(label);
 
 	}
 }

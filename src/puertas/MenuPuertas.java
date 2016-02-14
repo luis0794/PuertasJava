@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.ResourceBundle.Control;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class MenuPuertas extends JFrame {
 
@@ -184,6 +185,11 @@ public class MenuPuertas extends JFrame {
 		button_8.setBounds(709, 385, 49, 50);
 		panel.add(button_8);
 		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/fondo.jpg")));
+		label.setBounds(0, 0, 794, 451);
+		panel.add(label);
+		
 		panel_1 = new JPanel();
 		panel_1.setBounds(0, 0, 794, 451);
 		contentPane.add(panel_1);
@@ -277,5 +283,10 @@ public class MenuPuertas extends JFrame {
 		button_9.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/previous.png")));
 		button_9.setBounds(46, 385, 49, 50);
 		panel_1.add(button_9);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/fondo.jpg")));
+		label_1.setBounds(0, 0, 794, 451);
+		panel_1.add(label_1);
 	}
 }
