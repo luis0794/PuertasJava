@@ -4,9 +4,9 @@ import java.sql.*;
 public class Conexion {
 	
 	static String driver = "org.postgresql.Driver";
-	static String connectString = "jdbc:postgresql://localhost:5432/sistemacarlo";
-	static String user = "postgres";
-	static String password = "root";
+	static String connectString = "jdbc:postgresql://192.168.0.106:5432/sistemacarlo";
+	static String user = "raspb1";
+	static String password = "12345678*";
 	static Encriptacion cripto = new Encriptacion();
 	static EstadoLabs estado = new EstadoLabs();
 	static String id="";
@@ -21,13 +21,12 @@ public class Conexion {
 	{
 		String sql = "select * from usuario where username= '"+usuario+"'";
 		boolean flag = false;
+		
 		try{
-			
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(connectString, user , password);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			
 			while (rs.next()){
 				id = rs.getString("idusuario");
 				userBase = rs.getString("username");
@@ -37,13 +36,14 @@ public class Conexion {
 				idMalla= rs.getString("idusuariovinculado");
 				idRol= rs.getString("idrol");
 				if(contrasena.equals(cripto.Desencriptar(contraBase)) && usuario.equals(userBase)){flag=true;}
+
 			}
 			stmt.close();
 			con.close();
 		}
 		
 		catch ( Exception e ){
-			System.out.println(e.getMessage());
+			System.out.println("Nada "+e.getMessage());
 		}
 		if(idMalla==null){idMalla="-1";}
 		return flag;

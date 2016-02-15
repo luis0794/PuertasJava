@@ -34,9 +34,6 @@ public class CambiarContra extends JPanel {
 	Conexion con = new Conexion();
 	Encriptacion cripto = new Encriptacion();
 
-	/**
-	 * Create the panel.
-	 */
 	public CambiarContra() {
 		setBackground(new Color(0, 102, 153));
 		setLayout(null);
@@ -62,7 +59,6 @@ public class CambiarContra extends JPanel {
 				String cAct = passwordField.getText();
 				String cNew = passwordField_1.getText();
 				String cRNew = passwordField_2.getText();
-				
 				try {
 					if(cAct.equals(cripto.Desencriptar(con.getPasswd())))
 					{
@@ -74,7 +70,7 @@ public class CambiarContra extends JPanel {
 						{
 							if(cNew.equals(cRNew))
 							{
-								con.updatePass(cripto.Encriptar(cRNew));
+								con.updatePass(cRNew);
 								JOptionPane.showMessageDialog(null, "Contraseña actualizada con exito!");
 								menu = new MenuPuertas();
 						        menu.setVisible(true);
@@ -91,10 +87,8 @@ public class CambiarContra extends JPanel {
 						      JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (HeadlessException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

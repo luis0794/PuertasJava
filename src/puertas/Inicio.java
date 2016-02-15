@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import org.apache.commons.httpclient.HttpException;
+
 import java.awt.Window.Type;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -131,7 +134,7 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(con.login(txtUser.getText(), passwordField.getText()))
 				{
-					JOptionPane.showMessageDialog(null, "Bienvenid@, "+txtUser.getText()+"!");
+					JOptionPane.showMessageDialog(null, "Bienvenid@, "+con.getName()+"!");
 					conMalla.conectar(Integer.parseInt(con.getIdMalla()));
 					setVisible(false);
 					menu = new MenuPuertas();
@@ -270,6 +273,7 @@ public class Inicio extends JFrame {
 				}
 				if(bandera1==true)
 				{
+					passwordField.setText(passwordField.getText()+"1");
 				}
 			}
 		});

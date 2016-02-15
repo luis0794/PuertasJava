@@ -9,9 +9,9 @@ import java.util.LinkedList;
 
 public class ConexionMalla {
 	static String driver = "org.postgresql.Driver";
-	static String connectString = "jdbc:postgresql://localhost:5432/dbcontrol";
+	static String connectString = "jdbc:postgresql://192.168.0.16:5432/dbControl";
 	static String user = "postgres";
-	static String password = "root";
+	static String password = "12345678*";
 	static int idLectivo=-1;
 	static LinkedList<String> dias = new LinkedList<String>();;
 	static LinkedList<String> horas = new LinkedList<String>();

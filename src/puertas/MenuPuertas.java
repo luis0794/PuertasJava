@@ -2,6 +2,7 @@ package puertas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -11,12 +12,14 @@ import javax.swing.border.EmptyBorder;
 import logica.Conexion;
 import logica.ConexionMalla;
 import logica.EstadoLabs;
+import logica.Llamar;
 
 import java.awt.Window.Type;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ResourceBundle.Control;
 import java.awt.event.ActionEvent;
@@ -32,6 +35,7 @@ public class MenuPuertas extends JFrame {
 	Conexion con = new Conexion();
 	static ConexionMalla conMalla = new ConexionMalla();
 	static LinkedList<String> promo = conMalla.getPromo();
+	static Llamar pulso = new Llamar();
 	
 	public MenuPuertas() {
 		setResizable(false);
@@ -54,11 +58,26 @@ public class MenuPuertas extends JFrame {
 		btnPuerta1.setEnabled(est[0]);
 		btnPuerta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				con.saveReg(1, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
-				JOptionPane.showMessageDialog(null, "Abierto!");
-				Inicio inicio = new Inicio();
-				inicio.setVisible(true);
-				setVisible(false);
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratorio1.php"))
+					{
+						con.saveReg(1, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnPuerta1.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/lab1r.png")));
@@ -68,12 +87,26 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta2 = new JButton("");
 		btnPuerta2.setEnabled(est[1]);
 		btnPuerta2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0){
-				con.saveReg(2, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(1))), estado.fechaC());
-				JOptionPane.showMessageDialog(null, "Abierto!");
-				Inicio inicio = new Inicio();
-				inicio.setVisible(true);
-				setVisible(false);
+			public void actionPerformed(ActionEvent arg0){		
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratorio2.php"))
+					{
+						con.saveReg(2, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(1))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -84,11 +117,26 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta3 = new JButton("");
 		btnPuerta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				con.saveReg(3, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(2))), estado.fechaC());
-				JOptionPane.showMessageDialog(null, "Abierto!");
-				Inicio inicio = new Inicio();
-				inicio.setVisible(true);
-				setVisible(false);
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratorio3.php"))
+					{
+						con.saveReg(3, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(2))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnPuerta3.setEnabled(est[2]);
@@ -99,11 +147,25 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta4 = new JButton("");
 		btnPuerta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				con.saveReg(4, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(3))), estado.fechaC());
-				JOptionPane.showMessageDialog(null, "Abierto!");
-				Inicio inicio = new Inicio();
-				inicio.setVisible(true);
-				setVisible(false);
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratorio4.php"))
+					{
+						con.saveReg(4, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(3))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnPuerta4.setEnabled(est[3]);
@@ -113,12 +175,26 @@ public class MenuPuertas extends JFrame {
 		
 		JButton btnPuerta5 = new JButton("");
 		btnPuerta5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				con.saveReg(5, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(4))), estado.fechaC());
-				JOptionPane.showMessageDialog(null, "Abierto!");
-				Inicio inicio = new Inicio();
-				inicio.setVisible(true);
-				setVisible(false);
+			public void actionPerformed(ActionEvent e) {				
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratorio5.php"))
+					{
+						con.saveReg(5, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(4))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnPuerta5.setEnabled(est[4]);
@@ -129,11 +205,25 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta6 = new JButton("");
 		btnPuerta6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				con.saveReg(6, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(5))), estado.fechaC());
-				JOptionPane.showMessageDialog(null, "Abierto!");
-				Inicio inicio = new Inicio();
-				inicio.setVisible(true);
-				setVisible(false);
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratorio6.php"))
+					{
+						con.saveReg(6, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(5))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnPuerta6.setEnabled(est[5]);
@@ -197,12 +287,58 @@ public class MenuPuertas extends JFrame {
 		panel_1.setBackground(new Color(0, 102, 153));
 		
 		JButton btnPuerta7 = new JButton("");
+		btnPuerta7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratorioelec.php"))
+					{
+						con.saveReg(7, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(6))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPuerta7.setEnabled(est[6]);
 		btnPuerta7.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/ELECTr.png")));
 		btnPuerta7.setBounds(46, 168, 213, 93);
 		panel_1.add(btnPuerta7);
 		
 		JButton btnPuerta8 = new JButton("");
+		btnPuerta8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratoriomac.php"))
+					{
+						con.saveReg(8, estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(7))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPuerta8.setEnabled(est[7]);
 		btnPuerta8.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/macr.png")));
 		btnPuerta8.setBounds(293, 168, 213, 93);
@@ -211,12 +347,25 @@ public class MenuPuertas extends JFrame {
 		JButton btnPuerta9 = new JButton("");
 		btnPuerta9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//pulso
-				con.saveReg(Integer.parseInt(conMalla.getLab(0)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
-				JOptionPane.showMessageDialog(null, "Abierto!");
-				Inicio inicio = new Inicio();
-				inicio.setVisible(true);
-				setVisible(false);
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/laboratoriotele.php"))
+					{
+						con.saveReg(Integer.parseInt(conMalla.getLab(0)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(0))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnPuerta9.setEnabled(est[8]);
@@ -225,18 +374,87 @@ public class MenuPuertas extends JFrame {
 		panel_1.add(btnPuerta9);
 		
 		JButton btnPuerta10 = new JButton("");
+		btnPuerta10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/admin.php"))
+					{
+						con.saveReg(Integer.parseInt(conMalla.getLab(10)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(9))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPuerta10.setEnabled(est[9]);
 		btnPuerta10.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/ADMr.png")));
 		btnPuerta10.setBounds(46, 280, 213, 93);
 		panel_1.add(btnPuerta10);
 		
 		JButton btnPuerta11 = new JButton("");
+		btnPuerta11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/direccion.php"))
+					{
+						con.saveReg(Integer.parseInt(conMalla.getLab(11)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(10))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPuerta11.setEnabled(est[10]);
 		btnPuerta11.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/DIREr.png")));
 		btnPuerta11.setBounds(293, 280, 213, 93);
 		panel_1.add(btnPuerta11);
 		
 		JButton btnPuerta12 = new JButton("");
+		btnPuerta12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(pulso.pulsoPHP("http://192.168.0.101/home/pi/Desktop/pulsos/profe.php"))
+					{
+						con.saveReg(Integer.parseInt(conMalla.getLab(12)), estado.fechaL(), estado.hora(), conMalla.getSemester(Integer.parseInt(promo.get(11))), estado.fechaC());
+						JOptionPane.showMessageDialog(null, "Abierto!");
+						Inicio inicio = new Inicio();
+						inicio.setVisible(true);
+						setVisible(false);
+					}else
+					{
+						
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnPuerta12.setEnabled(est[11]);
 		btnPuerta12.setIcon(new ImageIcon(MenuPuertas.class.getResource("/media/images/profer.png")));
 		btnPuerta12.setBounds(545, 280, 213, 93);
