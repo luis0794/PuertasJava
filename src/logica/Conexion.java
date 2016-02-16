@@ -4,9 +4,12 @@ import java.sql.*;
 public class Conexion {
 	
 	static String driver = "org.postgresql.Driver";
-	static String connectString = "jdbc:postgresql://192.168.0.106:5432/sistemacarlo";
+	static String connectString = "jdbc:postgresql://192.168.0.106:5432/sistemacarlo2";
+	//static String connectString = "jdbc:postgresql://127.0.0.1:5432/sistemacarlo2";
 	static String user = "raspb1";
+	//static String user = "postgres";
 	static String password = "12345678*";
+	//static String password = "123456";
 	static Encriptacion cripto = new Encriptacion();
 	static EstadoLabs estado = new EstadoLabs();
 	static String id="";
@@ -19,7 +22,7 @@ public class Conexion {
 	
 	public boolean login(String usuario,String contrasena)
 	{
-		String sql = "select * from usuario where username= '"+usuario+"'";
+		String sql = "select * from control_usuario where username= '"+usuario+"'";
 		boolean flag = false;
 		
 		try{
@@ -62,7 +65,7 @@ public class Conexion {
 	public boolean updatePass(String pass)
 	{
 		String critoPass = cripto.Encriptar(pass);
-		String sql = "update usuario set password = '"+critoPass+"' where username = '"+userBase+"'";
+		String sql = "update control_usuario set password = '"+critoPass+"' where username = '"+userBase+"'";
 		boolean flag = false;
 		try{
 			
@@ -82,7 +85,7 @@ public class Conexion {
 	
 	public boolean saveReg(int idLab, String fechaL, String hora, String semestre, String fechaC)
 	{
-		String sql = "insert into registro (idusuario,idlaboratorio,fecha_hora_registro,hora_registro,semestre_registro,fecha_registro) values ('"+id+"',"+idLab+",'"+fechaL+"','"+hora+"','"+semestre+"','"+fechaC+"')";
+		String sql = "insert into control_registro (idusuario_id,idlaboratorio_id,fecha_hora_registro,hora_registro,semestre_registro,fecha_registro) values ('"+id+"',"+idLab+",'"+fechaL+"','"+hora+"','"+semestre+"','"+fechaC+"')";
 		boolean flag = false;
 		try{
 			
